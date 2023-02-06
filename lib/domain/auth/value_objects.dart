@@ -21,3 +21,14 @@ class EmailAddress extends ValueObject<String> {
   const EmailAddress._(this.value);
 }
 
+class Passwords extends ValueObject<String> {
+  final Either<ValueFailure<String>, String> value;
+
+  factory Passwords(String input) {
+    assert(input != null);
+    return Passwords._(validatePassword(input));
+  }
+
+  const Passwords._(this.value);
+}
+
